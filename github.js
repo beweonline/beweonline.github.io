@@ -1,6 +1,7 @@
 //george.kiwi 03/2023
-var path = "cards";
-var myCards = [];
+const path = "cards";
+let myCards = [];
+let cardPromiseResolve;
 
 function addImg(card, item){
 	// default gif
@@ -98,14 +99,30 @@ function addCards(){
 				addText(result, item);
 			})
 		}
-	setTimeout(() => {resolve(container);}, 500);
+	window['interval'] = setInterval(checkImgLoaded, 200);
+	cardPromiseResolve = resolve;
 	})
 }
 
+function checkImgLoaded(){
+	//sizes > 0 ?
+	let check = 1;
+	for(item of myCards){
+		const img = document.getElementById("img"+item.id);
+		const div = img.complete == true ? 1 : 0;
+		check = check/div;
+	}
+	console.log(check);
+	if(check == 1){
+		cardPromiseResolve(container);
+		clearInterval(interval);
+	}
+}
 //.then show + resize cards
 var Matter = {};
 onresize = resize;
 document.addEventListener('DOMContentLoaded', function() {
+	//observeContainer();
 	addCards()
 	.then( container => {
 		container.style.display = 'block';
