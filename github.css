@@ -1,0 +1,103 @@
+/*----------------------------------------------------------------------------*/
+/* I font / txt */
+*{
+	font-family: 'Rubik', sans-serif;
+}
+code{
+	padding: 2px !important;
+	font-family: 'Space Mono', monospace;
+	font-weight: 400 !important;
+	line-height: 1.4 !important;
+	animation-name: 0;
+	animation-duration: 0.8s;
+	animation-iteration-count: 1;
+}
+@keyframes flashBox {
+  0%    {background-color: none;}
+  10% 	{background-color: white;}
+  100% 	{background-color: none;}
+}
+pre{
+	margin-top: 2px !important;
+	margin-bottom: 6px !important;
+}
+span[class*="hljs"]{
+	font-family: 'Space Mono', monospace;
+	font-weight: 400 !important;
+	pointer-events: none; 
+}
+.card-reveal{
+	line-height: 1.2 !important;
+}
+.card-reveal .card-title{
+	padding-bottom: 20px !important;
+}
+.card-reveal, p{
+	font-family: 'Rubik', sans-serif;
+}
+/*----------------------------------------------------------------------------*/
+/* II key shortcut border */
+.keypress{
+	font-weight: 600 !important;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #cfd8dc #455a64 #37474f #455a64;
+	border-width: 2px 2px 5px 2px;
+}
+/*----------------------------------------------------------------------------*/
+/* III card / tabs */
+span{
+	text-align: center;
+}
+img {
+  object-fit: contain;
+}
+.noMarginBottom {
+	margin-bottom: 0px !important;
+}
+.noOverflow {
+	overflow: hidden;
+}
+.card {
+	margin-right: auto !important;
+	margin-left: auto !important;
+	margin-top: 2vh;
+}
+#container {
+	padding-left: 3vw;
+	padding-right: 3vw;
+}
+.tab a.active{
+	background-color: #64b5f66b !important;
+}
+p{
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+/*----------------------------------------------------------------------------*/
+/* IV floating button animation */
+@keyframes buttonBumping {
+  0% 	{transform: scale(1.0) 	translate(0px, 0px);}
+  20% 	{transform: scale(0.9) 	translate(0px, 5px);}		 
+  30% 	{transform: scale(1.1) 	translate(0px, -5px);}
+  100% 	{transform: scale(1.0) 	translate(0px, 0px);}
+}
+.btn-floating{
+	animation-name: buttonBumping;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+/*----------------------------------------------------------------------------*/
+/* V sleek scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
