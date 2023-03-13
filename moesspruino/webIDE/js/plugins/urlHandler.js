@@ -19,6 +19,7 @@
         window.location &&
         (window.location.origin=="https://localhost" ||
          window.location.origin=="https://espruino.github.io" ||
+         window.location.origin=="https://beweonline.github.io/moesspruino/webIDE" ||
          window.location.origin=="https://www.espruino.com")) {
       setTimeout(function() {
         handle(window.location.href);
