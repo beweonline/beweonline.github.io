@@ -9,7 +9,7 @@ Used for Relay service on espruino.com/ide as well as `npm espruino-web-ide`'s
   if (typeof window == "undefined" || typeof WebSocket == undefined) return;
 
   if (/*window.location.origin=="https://www.espruino.com" || */
-      window.location.origin=="https://espruino.github.io") {
+      window.location.origin=="https://beweonline.github.io/moesspruino/webIDE") {
     console.log("Running from github - WebSocket support disabled");
     return;
   }
@@ -93,7 +93,7 @@ Used for Relay service on espruino.com/ide as well as `npm espruino-web-ide`'s
     "write": writeSerial,
     "close": closeSerial,
   });
-  if (window.location.host.substr(-16) == "www.espruino.com") {
+  if (window.location.host.substr(-16) == "https://beweonline.github.io/moesspruino/webIDE") {
     Espruino.Core.SerialWebSocketRelay = {
       "init": function() {
         Espruino.Core.Config.add("RELAY_KEY", {
