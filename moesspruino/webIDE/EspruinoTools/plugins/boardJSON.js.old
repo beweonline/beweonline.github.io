@@ -32,8 +32,8 @@
   }
   
   function loadJSON(env, jsonPath, callback) {    
-	if(jsonPath == "http://beweonline.github.io/moesspruino/webIDE/json/ESP8266_4MB.json"){
-		jsonPath = "moesspruino/webIDE/boardJSON/ESP8266_4MB.json";
+	if(jsonPath == "http://www.espruino.com/json/ESP8266_4MB.json"){
+		jsonPath = "/boardJSON/ESP8266_4MB.json";
 	}
     Espruino.Core.Utils.getJSONURL(jsonPath, function(data){
 	  console.log("Loading "+jsonPath);
