@@ -275,9 +275,10 @@ function gif(e, path, tabId){
 			//loading screen
 			let oldHeight = elem.clientHeight;
 			elem.parentElement.style.height = oldHeight+"px";
-			elem.src = "gear.gif";
+			elem.src = "";
 			elem.style.height = "150px";
 			elem.style.top = ((oldHeight-150)/2)+"px";
+			elem.src = "gear.gif";
 			//check loaded
 			imgPromise = new Promise((resolve, reject) => {
 				checkImgInterval([{id:tempCardId}]);
