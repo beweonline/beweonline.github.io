@@ -289,9 +289,11 @@ function gif(e, path, tabId){
 					}, 10000, elem);
 			})
 			//revert if img does not exist
-			imgPromise.then( result => {
+			imgPromise.then( elem => {
 				//set card.src
-				result.src = img.src;
+				elem.src = img.getAttribute('src');
+				//reset preloaded gif
+				setTimeout(_=> elem.src = elem.getAttribute('src'), 50);
 				clearStyle(elem);
 				e.children[0].innerHTML = 'pause';
 				e.classList.remove("blue");
