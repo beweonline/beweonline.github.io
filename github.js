@@ -101,13 +101,32 @@ function addCards(){
 				addText(result, item);
 			})
 		}
-	window['interval'] = setInterval(checkImgLoaded, 50);
+	checkImgInterval(myCards);
 	cardPromiseResolve = resolve;
 	})
 }
 
-function checkImgLoaded(){
-	//sizes > 0 ?
+function checkImgInterval(elems){
+	let ids = elems.map(x => x.id);
+	window['interval'] = setInterval(_=>checkImgLoaded(ids), 100);
+}
+
+function checkImgLoaded(ids){
+	let check = 1;
+	for(id of ids){
+		const img = document.getElementById("img"+id);
+		const div = img != undefined && img.complete == true ? 1 : 0;
+		check = check/div;
+		console.log(id, img, check);
+	}
+	if(check == 1){
+		cardPromiseResolve(container);
+		clearInterval(interval);
+		console.log("DONE");
+	}
+}
+
+/* function checkImgLoaded(){
 	console.log('tick...');
 	let check = 1;
 	for(item of myCards){
@@ -119,7 +138,8 @@ function checkImgLoaded(){
 		cardPromiseResolve(container);
 		clearInterval(interval);
 	}
-}
+} */
+
 //.then show + resize cards
 var Matter = {};
 onresize = resize;
@@ -256,17 +276,47 @@ function gif(e, path, tabId){
 		const elem = document.getElementById('img'+id);
 		const filePath = path+'/';
 		if(elem.src.slice(-8) == id+index+'x.gif' && tab==false){
-			elem.src = filePath+id+index+'.gif';
+			// load to temp div
+			const img = document.createElement("img");
+			tempCardId = "0"+(myCards.length+1);
+			img.id = "img"+tempCardId;
+			img.src = filePath+id+index+'.gif';
+			img.style.display = "none";
+			container.appendChild(img);
+			//elem.src = filePath+id+index+'.gif';
+			//loading screen
+			let oldHeight = elem.naturalHeight;
+			elem.parentElement.style.height = oldHeight+"px";
+			elem.src = "gear.gif";
+			elem.style.height = "150px";
+			elem.style.top = ((oldHeight-150)/2)+"px";
+			//check loaded
+			imgPromise = new Promise((resolve, reject) => {
+				checkImgInterval([{id:tempCardId}]);
+				cardPromiseResolve = resolve;
+			})
 			//revert if img does not exist
+			imgPromise.then(_=> {
+				//set card.src
+				elem.src = img.src;
+				elem.style.height = "";
+				elem.style.top = "";
+				e.children[0].innerHTML = 'pause';
+				e.classList.remove("blue");
+				e.classList.remove("lighten-2");
+				e.classList.add("amber");
+				e.classList.add("accent-3");
+				e.style.animation = false;
+				img.remove();
+			})
+			//handbrake
 			setTimeout(function(elem){
-				if(elem.naturalHeight == 0){gif(e, path);}
+				if(elem.naturalHeight == 0){
+					elem.style.height = "";
+					elem.style.top = "";
+					gif(e, path);
+				}
 				}, 100, elem);
-			e.children[0].innerHTML = 'pause';
-			e.classList.remove("blue");
-			e.classList.remove("lighten-2");
-			e.classList.add("amber");
-			e.classList.add("accent-3");
-			e.style.animation = false;
 		} else {
 			elem.src = filePath+id+index+'x.gif';
 			e.children[0].innerHTML = 'play_arrow';
