@@ -93,7 +93,7 @@ Used for Relay service on espruino.com/ide as well as `npm espruino-web-ide`'s
     "write": writeSerial,
     "close": closeSerial,
   });
-  if (window.location.host.substr(-16) == "https://beweonline.github.io/moesspruino/webIDE") {
+  if (window.location.host == "beweonline.github.io") {
     Espruino.Core.SerialWebSocketRelay = {
       "init": function() {
         Espruino.Core.Config.add("RELAY_KEY", {
