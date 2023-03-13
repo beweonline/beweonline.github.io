@@ -24,7 +24,7 @@
   "INDENTATION_TYPE": "spaces",
   "TAB_SIZE": 2,
   "DISABLE_CODE_HINTS": false,
-  "BOARD_JSON_URL": "https://beweonline.github.io/moesspruino/webIDE/json",
+  "BOARD_JSON_URL": "https://beweonline.github.io/moesspruino/webIDE/boardJSON",
   "SERIAL_THROTTLE_SEND": false,
   "COMPILATION": false,
   "COMPILATION_URL": "https://www.espruino.com/service/compiler",
