@@ -276,7 +276,7 @@ function gif(e, path, tabId){
 			let oldHeight = elem.clientHeight;
 			elem.parentElement.style.height = oldHeight+"px";
 			elem.src = "";
-			elem.style.height = "150px";
+			elem.style.height = "128px";
 			elem.style.top = ((oldHeight-150)/2)+"px";
 			elem.src = "gear.gif";
 			//check loaded
