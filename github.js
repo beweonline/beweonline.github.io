@@ -1,5 +1,7 @@
 //george.kiwi 03/2023
 const path = "cards";
+window['path'] = path;
+
 let myCards = [];
 let cardPromiseResolve;
 
@@ -41,10 +43,10 @@ function addTabs(card, item){
 }
 
 function tabSwap(e, tabId, id){
+	console.log(e, tabId, id);
 	const card = document.getElementById(id);
 	const floatButton = findChild(card, 'btn-floating');
 	gif(floatButton, path, tabId);
-	
 }
 
 function addTitles(card, item){
@@ -99,20 +101,20 @@ function addCards(){
 				addText(result, item);
 			})
 		}
-	window['interval'] = setInterval(checkImgLoaded, 200);
+	window['interval'] = setInterval(checkImgLoaded, 50);
 	cardPromiseResolve = resolve;
 	})
 }
 
 function checkImgLoaded(){
 	//sizes > 0 ?
+	console.log('tick...');
 	let check = 1;
 	for(item of myCards){
 		const img = document.getElementById("img"+item.id);
-		const div = img.complete == true ? 1 : 0;
+		const div = img != undefined && img.complete == true ? 1 : 0;
 		check = check/div;
 	}
-	console.log(check);
 	if(check == 1){
 		cardPromiseResolve(container);
 		clearInterval(interval);
@@ -213,7 +215,7 @@ function floatButtons(){
 }
 
 function gif(e, path, tabId){
-	path = window['path'];
+	if(!path){path = window['path'];}
 	var id = e.parentElement.parentElement.id; //01
 	// get active tab
 	function cardActiveIndex(e){
@@ -243,17 +245,17 @@ function gif(e, path, tabId){
 			case 2: index = 'c'; break;
 			case 3: index = 'd'; break;
 		}
-		swapPic(index);
+		swapPic(index, true);
 	} else {
 		// active button for play
 		var index = cardActiveIndex(e);
-		swapPic(index);
+		swapPic(index, false);
 	}
 	//swap ...Yx.gif for ...Y.gif
-	function swapPic(index){
+	function swapPic(index, tab){
 		const elem = document.getElementById('img'+id);
 		const filePath = path+'/';
-		if(elem.src.slice(-8) == id+index+'x.gif'){
+		if(elem.src.slice(-8) == id+index+'x.gif' && tab==false){
 			elem.src = filePath+id+index+'.gif';
 			//revert if img does not exist
 			setTimeout(function(elem){
