@@ -32,9 +32,6 @@ span[class*="hljs"]{
 .card-reveal .card-title{
 	padding-bottom: 20px !important;
 }
-.card-reveal, p{
-	font-family: 'Rubik', sans-serif;
-}
 /*----------------------------------------------------------------------------*/
 /* II key shortcut border */
 .keypress{
@@ -100,4 +97,33 @@ p{
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+/*----------------------------------------------------------------------------*/
+/* VI spinner */
+.lds-dual-ring {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 20vw;
+  height: 20vw;
+  margin: 8px;
+  border-radius: 50%;
+  border: 2vw solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

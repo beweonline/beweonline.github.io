@@ -101,17 +101,17 @@ function addCards(){
 				addText(result, item);
 			})
 		}
-	checkImgInterval(myCards);
+	checkImgInterval(myCards, container);
 	cardPromiseResolve = resolve;
 	})
 }
 
-function checkImgInterval(elems){
+function checkImgInterval(elems, result){
 	let ids = elems.map(x => x.id);
-	window['interval'] = setInterval(_=>checkImgLoaded(ids), 100);
+	window['interval'] = setInterval(_=>checkImgLoaded(ids, result), 100);
 }
 
-function checkImgLoaded(ids){
+function checkImgLoaded(ids, result){
 	let check = 1;
 	for(id of ids){
 		const img = document.getElementById("img"+id);
@@ -120,7 +120,7 @@ function checkImgLoaded(ids){
 		console.log(id, img, check);
 	}
 	if(check == 1){
-		cardPromiseResolve(container);
+		cardPromiseResolve(result);
 		clearInterval(interval);
 		console.log("DONE");
 	}
@@ -132,8 +132,8 @@ onresize = resize;
 document.addEventListener('DOMContentLoaded', function() {
 	//observeContainer();
 	addCards()
-	.then( container => {
-		container.style.display = 'block';
+	.then( result => {
+		result.style.display = 'block';
 		resize();
 		/*
 		var elems = document.querySelectorAll('.sidenav');
@@ -271,23 +271,27 @@ function gif(e, path, tabId){
 			img.src = filePath+id+index+'.gif';
 			img.style.display = "none";
 			container.appendChild(img);
-			//elem.src = filePath+id+index+'.gif';
 			//loading screen
 			let oldHeight = elem.clientHeight;
 			elem.parentElement.style.height = oldHeight+"px";
 			elem.src = "";
-			elem.style.height = "128px";
-			elem.style.top = ((oldHeight-150)/2)+"px";
-			elem.src = "gear.gif";
+			spinner(elem);
 			//check loaded
 			imgPromise = new Promise((resolve, reject) => {
-				checkImgInterval([{id:tempCardId}]);
+				checkImgInterval([{id:tempCardId}], elem);
 				cardPromiseResolve = resolve;
+				setTimeout(function(elem){
+					if(elem.naturalHeight == 0){
+						clearStyle(elem);
+						e.onclick = onclick;
+						gif(e, path);
+					}
+					}, 10000, elem);
 			})
 			//revert if img does not exist
-			imgPromise.then(_=> {
+			imgPromise.then( result => {
 				//set card.src
-				elem.src = img.src;
+				result.src = img.src;
 				clearStyle(elem);
 				e.children[0].innerHTML = 'pause';
 				e.classList.remove("blue");
@@ -299,20 +303,19 @@ function gif(e, path, tabId){
 				e.onclick = onclick;
 			})
 			function clearStyle(elem){
-				console.log("HELLOOOO");
-				elem.style.height = "";
-				elem.style.top = "";
+				console.log("img children", elem.parentElement.children)
 				elem.parentElement.style.height = "";
-				console.log(elem.parentElement, elem.parentElement.style.height)
+				console.log(elem.parentElement.children[2]);
+				elem.parentElement.children[2].remove();
+			}
+			function spinner(elem){
+				const div = document.createElement("div");
+				let spin =
+				`<div class="lds-dual-ring"></div>`
+				div.innerHTML = spin
+				elem.parentElement.appendChild(div.children[0]);
 			}
 			//handbrake
-			setTimeout(function(elem){
-				if(elem.naturalHeight == 0){
-					clearStyle(elem);
-					e.onclick = onclick;
-					gif(e, path);
-				}
-				}, 1000, elem);
 		} else {
 			elem.src = filePath+id+index+'x.gif';
 			e.children[0].innerHTML = 'play_arrow';
