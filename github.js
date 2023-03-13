@@ -273,7 +273,7 @@ function gif(e, path, tabId){
 			container.appendChild(img);
 			//elem.src = filePath+id+index+'.gif';
 			//loading screen
-			let oldHeight = elem.naturalHeight;
+			let oldHeight = elem.clientHeight;
 			elem.parentElement.style.height = oldHeight+"px";
 			elem.src = "gear.gif";
 			elem.style.height = "150px";
@@ -287,8 +287,7 @@ function gif(e, path, tabId){
 			imgPromise.then(_=> {
 				//set card.src
 				elem.src = img.src;
-				elem.style.height = "";
-				elem.style.top = "";
+				clearStyle(elem);
 				e.children[0].innerHTML = 'pause';
 				e.classList.remove("blue");
 				e.classList.remove("lighten-2");
@@ -298,11 +297,17 @@ function gif(e, path, tabId){
 				img.remove();
 				e.onclick = onclick;
 			})
+			function clearStyle(elem){
+				console.log("HELLOOOO");
+				elem.style.height = "";
+				elem.style.top = "";
+				elem.parentElement.style.height = "";
+				console.log(elem.parentElement, elem.parentElement.style.height)
+			}
 			//handbrake
 			setTimeout(function(elem){
 				if(elem.naturalHeight == 0){
-					elem.style.height = "";
-					elem.style.top = "";
+					clearStyle(elem);
 					e.onclick = onclick;
 					gif(e, path);
 				}
