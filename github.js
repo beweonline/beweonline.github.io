@@ -126,20 +126,6 @@ function checkImgLoaded(ids){
 	}
 }
 
-/* function checkImgLoaded(){
-	console.log('tick...');
-	let check = 1;
-	for(item of myCards){
-		const img = document.getElementById("img"+item.id);
-		const div = img != undefined && img.complete == true ? 1 : 0;
-		check = check/div;
-	}
-	if(check == 1){
-		cardPromiseResolve(container);
-		clearInterval(interval);
-	}
-} */
-
 //.then show + resize cards
 var Matter = {};
 onresize = resize;
@@ -235,6 +221,8 @@ function floatButtons(){
 }
 
 function gif(e, path, tabId){
+	const onclick = e.onclick;
+	e.onclick = "";
 	if(!path){path = window['path'];}
 	var id = e.parentElement.parentElement.id; //01
 	// get active tab
@@ -308,15 +296,17 @@ function gif(e, path, tabId){
 				e.classList.add("accent-3");
 				e.style.animation = false;
 				img.remove();
+				e.onclick = onclick;
 			})
 			//handbrake
 			setTimeout(function(elem){
 				if(elem.naturalHeight == 0){
 					elem.style.height = "";
 					elem.style.top = "";
+					e.onclick = onclick;
 					gif(e, path);
 				}
-				}, 100, elem);
+				}, 1000, elem);
 		} else {
 			elem.src = filePath+id+index+'x.gif';
 			e.children[0].innerHTML = 'play_arrow';
@@ -325,6 +315,7 @@ function gif(e, path, tabId){
 			e.classList.add("blue");
 			e.classList.add("lighten-2");
 			e.style.animation = "";
+			e.onclick = onclick;
 		}
 	}
 }
