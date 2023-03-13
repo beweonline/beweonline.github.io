@@ -18,7 +18,7 @@
       name : "Board JSON URL",
       description : "Where to search online for board JSON files - these contain links to up to date firmware as well as detailed information about the board's hardware",
       type : "string",
-      defaultValue : (Espruino.Core.Utils.needsHTTPS()?"https":"http")+"://www.espruino.com/json"
+      defaultValue : (Espruino.Core.Utils.needsHTTPS()?"https":"http")+"://beweonline.github.io/moesspruino/webIDE/json"
     });
     
     
