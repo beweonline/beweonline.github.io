@@ -1,14 +1,37 @@
 //george.kiwi 03/2023
-const path = "cards";
-window['path'] = path;
+var path = "cards1";
+//window['path'] = path;
 
 let myCards = [];
 let cardPromiseResolve;
+
+function section(nr){
+	console.log("section", nr);
+	cardSection = nr;
+	cardsObj = [];
+	myCards = [];
+	cardsObj = window["cardsObj"+nr];
+	const container = document.getElementById("container");
+	for(var x = container.children.length-1; x >= 0 ; x--){
+		container.children[x].remove();
+	}
+	path = "cards"+nr;
+	console.log(path);
+	setTimeout(_=>{addCards()
+	.then( result => {
+		result.style.display = 'block';
+		resize();
+		elems = document.querySelectorAll('.tabs');
+		Matter.Tabs = M.Tabs.init(elems, {});
+	} )},100);
+	
+}
 
 function addImg(card, item){
 	// default gif
 	const img = findChild(card, "activator");
 	img.src = path+"/"+item.id+"ax.gif";
+	console.log(path+"/"+item.id+"ax.gif");
 	img.id = "img"+item.id;
 }
 
@@ -131,6 +154,7 @@ var Matter = {};
 onresize = resize;
 document.addEventListener('DOMContentLoaded', function() {
 	//observeContainer();
+	cardsObj = window["cardsObj"+1];
 	addCards()
 	.then( result => {
 		result.style.display = 'block';

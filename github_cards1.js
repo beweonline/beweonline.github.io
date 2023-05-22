@@ -1,6 +1,6 @@
-var cardsObj = {};
+var cardsObj1 = {};
 
-cardsObj._01 = {
+cardsObj1._01 = {
 	id: '01',
 	swap: [true,true],
 	tabs: ["console", "editor"],
@@ -59,7 +59,7 @@ clearInterval(i);
 	copycode: function(prop){return this['code'+prop]}
 };
 
-cardsObj._02 = {
+cardsObj1._02 = {
 	id: '02',
 	swap: [false],
 	tabs: ["source code"],
