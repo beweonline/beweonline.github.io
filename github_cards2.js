@@ -97,3 +97,53 @@ servo0.calibrate();
 `,
 	copycode: function(prop){return this['code'+prop]}
 };
+
+cardsObj2._03 = {
+	id: '03',
+	swap: [false],
+	tabs: ["commands II"],
+	titles: [["commands II",""]],
+	txtTitle: 'sg90 commands I',
+	code1: `\
+servo0.sleep();
+servo0.wake();\
+`,
+	code2: `\
+servo0.position;
+servo0.increment = 1/50;\
+`,
+	code3: `\
+sleep();
+wake();
+pause();
+stop();\
+`,
+	txt: `
+<p>the sg90 module offers a few commands to control servos</p>
+<p>the function "calibrate()" will move all servos to position 2.7</p>
+<p>if we pass "1" as the argument it will pulse to that position</p>
+<p>if the function is called as a method it will calibrate only that servo</p>
+<br>
+<pre onclick="clipboard(event,['_01','copycode','1'])"><code class="language-javascript">\
+calibrate();
+calibrate(1);
+servo0.calibrate();
+servo0.calibrate(1);
+\</code></pre>
+
+<br>
+<p>any servo can be paused for a certain amount of milliseconds</p>
+<p>a servo can be moved step-by-step to a position between 0.9 and 4.5</p>
+<p>it can also be pulsed instantly to a position</p>
+<p>be careful! if your servo is connected to heavy load, it might break.</p>
+<br>
+
+<pre onclick="clipboard(event,['_01','copycode','2'])"><code class="language-javascript">\
+servo0.pause(1000);
+servo0.move(3);
+servo0.pulse(3.1);
+servo0.calibrate();
+\</code></pre>
+`,
+	copycode: function(prop){return this['code'+prop]}
+};
