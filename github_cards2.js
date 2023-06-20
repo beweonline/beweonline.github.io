@@ -74,7 +74,7 @@ servo0.calibrate();\
 <p>if we pass "1" as the argument it will pulse to that position</p>
 <p>if the function is called as a method it will calibrate only that servo</p>
 <br>
-<pre onclick="clipboard(event,['_01','copycode','1'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_02','copycode','1'])"><code class="language-javascript">\
 calibrate();
 calibrate(1);
 servo0.calibrate();
@@ -88,7 +88,7 @@ servo0.calibrate(1);
 <p>be careful! if your servo is connected to heavy load, it might break.</p>
 <br>
 
-<pre onclick="clipboard(event,['_01','copycode','2'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_02','copycode','2'])"><code class="language-javascript">\
 servo0.pause(1000);
 servo0.move(3);
 servo0.pulse(3.1);
@@ -116,13 +116,17 @@ servo0.increment = 1/50;\
 sleep();
 wake();
 pause();
-stop();\
+\
 `,
+	code4: `\
+ stop();
+ \
+ `,
 	txt: `
 <p>to counter gravitational force a servo would have to pulse constantly</p>
 <p>.sleep() and .wake() are methods to activate and deactivate pulsing of a servo</p>
 <br>
-<pre onclick="clipboard(event,['_01','copycode','1'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_03','copycode','1'])"><code class="language-javascript">\
 servo0.sleep();
 servo0.wake();
 \</code></pre>
@@ -136,7 +140,7 @@ servo0.wake();
 <p>.increment stores the step size as a fraction of 1.</p>
 <p>the smaller the value the more steps have to be taken the slowlier the motion</p>
 <br>
-<pre onclick="clipboard(event,['_01','copycode','1'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_03','copycode','2'])"><code class="language-javascript">\
 servo0.position;
 servo0.increment = 1/50;
 \</code></pre>
@@ -148,13 +152,13 @@ servo0.increment = 1/50;
 <p>use this command as an emergency break</p>
 <br>
 
-<pre onclick="clipboard(event,['_01','copycode','2'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_03','copycode','3'])"><code class="language-javascript">\
 sleep();
 wake();
 pause();
 \</code></pre>
 <br>
-<pre onclick="clipboard(event,['_01','copycode','2'])"><code class="language-javascript">\
+<pre onclick="clipboard(event,['_03','copycode','4'])"><code class="language-javascript">\
 stop();
 \</code></pre>
 `,
