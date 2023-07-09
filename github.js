@@ -48,6 +48,13 @@ function addTabs(card, item){
 		newTab = newTab.children[0];
 		newTab.children[0].text = item.tabs[i];
 		const tabId = i;
+		if("hideTitles" in item){
+			if(item.hideTitles){
+				newTab.children[0].addEventListener("click", _=> {
+					hideTitles(card.id, tabId);
+				});
+			}
+		}
 		// set longplay gif?
 		let floatButton = findChild(card, "btn-floating");
 		if(item.swap[i]){
@@ -83,7 +90,7 @@ function addTitles(card, item){
 	for(var i=0; i< item.titles.length; i++){
 		var newTitle = document.createElement("div");
 		newTitle.innerHTML = titleDiv;
-		console.log(item.titles[i][1].length, item.titles[i][1]);
+		//console.log(item.titles[i][1].length, item.titles[i][1]);
 		let html;
 		if(item.titles[i][1].length > 2){
 			html = '<a target="_blank" href='+item.titles[i][1]+
@@ -95,6 +102,24 @@ function addTitles(card, item){
 		newTitle.children[0].innerHTML = html;
 		newTitle.children[0].children[0].style.color = "rgba(0,0,0,0.87)";
 		titles.appendChild(newTitle);
+		if("hideTitles" in item){
+			if(item.hideTitles){
+				if(i==0) {newTitle.style.display="block";
+				} else {
+					newTitle.style.display="none";
+				}
+			}
+		}
+	}
+}
+
+function hideTitles(cardID, tabID){
+	// hide all divs except the one matching tab index
+	const card = document.getElementById(cardID);
+	const children = card.children[1].children[1].children[0].children;
+	for(var i=0; i < children.length; i++){
+		if(i != tabID){children[i].style.display="none";}
+		else {children[i].style.display="block";}
 	}
 }
 

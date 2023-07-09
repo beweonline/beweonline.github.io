@@ -6,6 +6,7 @@ cardsObj3._01 = {
 	tabs: ["DEMO","PLANS"],
 	titles: [["robot in action >>>","videos/video.html?src=demo.mp4"],
 			 ["PDF plans >>>","https://github.com/beweonline/moesspruino/tree/main/plans"]],
+	hideTitles: true,
 	txtTitle: 'Blueprints',
 	txt: `<p class="flow-text">
 moessARM is an effort to construct a model of a robotic arm with servo motors.
@@ -33,6 +34,7 @@ cardsObj3._02 = {
 	titles: [["base assembly >>>","videos/video.html?src=base.mp4"],
 			 ["turntable 1 >>>","videos/turntable.html?src=arm1TEST.mp4"],
 			 ["turntable 2 >>>","videos/turntable.html?src=arm2.mp4"]],
+	hideTitles: true,
 	txtTitle: 'construction support videos',
 	txt: `<p class="flow-text">
 watch a video loop of the base assembly or
@@ -49,9 +51,10 @@ cardsObj3._03 = {
 	id: '03',
 	swap: [false,false,false],
 	tabs: ["gripper", "four-bar","tolerance"],
-	titles: [["grip orientation","videos/video.html?src=linkage1.mp4"],
-			 ["rocker-coupler","videos/video.html?src=linkage2.mp4"],
-			 ["freedom","videos/video.html?src=linkage3.mp4"]],
+	titles: [["grip orientation >>>","videos/video.html?src=linkage1.mp4"],
+			 ["rocker-coupler >>>","videos/video.html?src=linkage2.mp4"],
+			 ["freedom >>>","videos/video.html?src=linkage3.mp4"]],
+	hideTitles: true,
 	txtTitle: 'construction support videos',
 	txt: `<p class="flow-text">
 the mechanics of the arm is describable by a set of planar quadrilateral linkages.
