@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<style>
+		body{
+			margin: 0px;
+			overflow: hidden;
+			background: black;
+		}
+		#video {
+		  display: block;
+		  width: auto;
+		  height: auto;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+	</style>
+	</head>
+<body>
+	<video id="video">
+		<source src="test.mp4" type="video/mp4">
+	</video>
+
+
+<script>
+	var videoSrc;
+	console.log(location);
+	var start = location.search.indexOf("=")+1;
+	videoSrc = location.search.slice(start, location.search.length);
+	console.log(videoSrc);
+	
+	//w3School...
+	var video = document.getElementById("video");
+	video.children[0].src = videoSrc;
+	video.loop = true;
+	var slider = document.getElementById("myRange");
+	
+	function togglePlay(e){
+		console.log(e);
+		if(video.readyState == 4){
+			if(video.paused == true){
+				video.play();
+			} else {
+				video.pause();
+			}
+		}
+	}
+	
+	video.addEventListener("click", togglePlay);
+	video.addEventListener("touchstart", togglePlay);
+
+	//resize
+	function resize(){
+		var windowRatio = window.innerWidth/window.innerHeight;
+		var	videoRatio = video.videoWidth/video.videoHeight;
+		if(windowRatio < videoRatio){
+			video.style.width = window.innerWidth+"px";
+			video.style.height = window.innerWidth/videoRatio+"px";
+		}else{
+			video.style.height = window.innerHeight+"px";
+			video.style.width = window.innerHeight*videoRatio+"px";	
+		}
+	}
+	window.onresize = _=> resize();
+	window.onload = function(){
+		if(video.videoHeight > 0){
+			resize();
+		} else {setTimeout(window.onload,200);}
+	}
+</script>
+
+</body>
+</html>

@@ -1,12 +1,11 @@
 //george.kiwi 03/2023
 var path = "cards1";
-//window['path'] = path;
 
 let myCards = [];
 let cardPromiseResolve;
 
 function section(nr){
-	console.log("section", nr);
+	M.Sidenav.getInstance(Matter.Sidenav[0].el).close();
 	cardSection = nr;
 	cardsObj = [];
 	myCards = [];
@@ -22,14 +21,18 @@ function section(nr){
 		result.style.display = 'block';
 		resize();
 		elems = document.querySelectorAll('.tabs');
-		Matter.Tabs = M.Tabs.init(elems, {});
+		Matter.Tabs = M.Tabs.init(elems, {});	
 	} )},100);
-	
+}
+
+function mobileSection(nr){
+	M.Tabs.getInstance(Matter.Tabs[0].el).select(nr);
 }
 
 function addImg(card, item){
 	// default gif
 	const img = findChild(card, "activator");
+	img.classList.add("cursor");
 	img.src = path+"/"+item.id+"ax.gif";
 	console.log(path+"/"+item.id+"ax.gif");
 	img.id = "img"+item.id;
@@ -55,6 +58,7 @@ function addTabs(card, item){
 			floatButton.style.display = "block";
 		} else {
 			newTab.children[0].onclick = (e) => {
+				tabSwap(e, tabId, card.id);
 				floatButton.style.display = "none";
 				}
 			floatButton.style.display = "none";
@@ -79,7 +83,15 @@ function addTitles(card, item){
 	for(var i=0; i< item.titles.length; i++){
 		var newTitle = document.createElement("div");
 		newTitle.innerHTML = titleDiv;
-		const html = "<a href="+item.titles[i][1]+">"+item.titles[i][0]+"</a>";
+		console.log(item.titles[i][1].length, item.titles[i][1]);
+		let html;
+		if(item.titles[i][1].length > 2){
+			html = '<a target="_blank" href='+item.titles[i][1]+
+					     '>'+item.titles[i][0]+'</a>';
+		} else {
+			html = '<a href='+item.titles[i][1]+
+					     '>'+item.titles[i][0]+'</a>';
+		}
 		newTitle.children[0].innerHTML = html;
 		newTitle.children[0].children[0].style.color = "rgba(0,0,0,0.87)";
 		titles.appendChild(newTitle);
@@ -159,11 +171,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	.then( result => {
 		result.style.display = 'block';
 		resize();
-		/*
+		
 		var elems = document.querySelectorAll('.sidenav');
 		const options = {edge: "left"};
 		Matter.Sidenav = M.Sidenav.init(elems, options);
-		*/
+		
 		elems = document.querySelectorAll('.tabs');
 		Matter.Tabs = M.Tabs.init(elems, {});
 	} )

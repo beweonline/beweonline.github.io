@@ -19,13 +19,13 @@ function blink(){
   digitalWrite(NodeMCU.D0, status);
 }
 var i = setInterval(blink, 300);\
-	`,
+`,
 	code3: `\
 changeInterval(i, 600);\
-	`,
+`,
 	code4: `\
 clearInterval(i);\
-	`,
+`,
 	txt: `
 <p>here are two equivalent examples of how to let the built-in LED flash</p>
 <p>click any code box to copy to the clipboard</p>
@@ -63,11 +63,13 @@ cardsObj1._02 = {
 	id: '02',
 	swap: [false],
 	tabs: ["source code"],
-	titles: [["inspect & downloads","https://github.com/beweonline/moesspruino"]],
+	titles: [["inspect & download","https://github.com/beweonline/moesspruino"]],
 	txtTitle: 'github repository',
 	txt: `<p class="flow-text">
 moesspruino is a customization of the espruino webIDE. both this alteration
-and the original project are free open source software. head over to github and
-find all the files to start building and customizing your experience.
+and the original project are free open source software. head over to
+<a class="blue-grey-text text-lighten-5" target="_blank"
+href="https://github.com/beweonline/moesspruino">github</a>
+and find all the files to start building and customizing your experience.
 </p>`
 };

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>github beweonline</title>
+	<meta charset="utf-8">
+	<!-- Let browser know website is optimized for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<!-- Import Google Icon Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css?family=Rubik:400,600;" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Space+Mono:400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+	<!-- custom CSS overrides -->
+	<link rel="stylesheet" href="github.css">
+	<style>
+		.cursor{
+			cursor:url(info.png), auto;
+		}
+	</style>
+</head>
+
+<body class="blue-grey darken-4">
+	<!-- desktop MENU -->
+	<nav id="nav" class="nav-extended">
+    <div class="nav-wrapper blue-grey darken-2">
+		<a class="brand-logo" href="#!" >
+		<a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		<div class="row" style="margin: 0px;">
+			<div class="col"></div>
+			<div class="col" style="font-size: 32px;">moessARM</div>
+		</div>
+		</a>
+    </div>
+    <div class="nav-content blue-grey darken-3">
+		<ul class="tabs tabs-transparent noOverflow hide-on-small-and-down">
+			<li class="tab"><a href="#1" onclick="section(1)" class="active">moesspruino</a></li>
+			<li class="tab"><a href="#2" onclick="section(2)">sg90</a></li>
+			<li class="tab"><a href="#3" onclick="section(3)">pick'n'place</a></li>
+			<li class="tab"><a href="#4" onclick="section(4)">okuda rc</a></li>
+			<li class="tab"><a href="#5" onclick="section(5)">moessbian</a></li>
+		</ul>
+    </div>
+	</nav>
+	<!-- (hidden) mobile sidenav MENU -->
+	<ul class="sidenav" id="mobile">
+		<li><a onclick="mobileSection(1)">moesspruino</a></li>
+		<li><a onclick="mobileSection(2)">sg90</a></li>
+		<li><a onclick="mobileSection(3)">pick'n'place</a></li>
+		<li><a onclick="mobileSection(4)">okuda rc</a></li>
+		<li><a onclick="mobileSection(5)">moessbian</a></li>
+	</ul>
+
+	<div id ="container">
+	<!-- CARDs -->
+	</div>
+	<!-- JavaScript at end of body for optimized loading -->
+	<!-- compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
+	<!-- custom JavaScript -->
+	<script src="card.js"></script>
+	<script src="github_cards1.js"></script>
+	<script src="github_cards2.js"></script>
+	<script src="github_cards3.js"></script>
+	<script src="github.js"></script>
+</body>
+</html>
