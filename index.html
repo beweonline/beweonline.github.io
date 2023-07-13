@@ -12,23 +12,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Space+Mono:400" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- compiled and minified CSS -->
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 	<!-- custom CSS overrides -->
 	<link rel="stylesheet" href="github.css">
 	<style>
-		.italic{
-			font-style: italic;
-		}
-		.cursor{
-			cursor:url(info.png), auto;
-		}
 	</style>
 </head>
 
 <body class="blue-grey darken-4">
+	<main class="main-container">
+	<div id="sticky bottom overlay">
 	<!-- desktop MENU -->
-	<nav id="nav" class="nav-extended">
+	<nav id="nav" class="nav-extended" style="position: relative;">
     <div class="nav-wrapper blue-grey darken-2">
 		<a class="brand-logo" href="#!" >
 		<a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -38,7 +35,8 @@
 		</div>
 		</a>
     </div>
-    <div class="nav-content blue-grey darken-3">
+	</nav>
+    <div id="menubar" class="nav-content blue-grey darken-3">
 		<ul class="tabs tabs-transparent noOverflow hide-on-small-and-down">
 			<li class="tab"><a href="#1" onclick="section(1)" class="active">moesspruino</a></li>
 			<li class="tab"><a href="#2" onclick="section(2)">sg90</a></li>
@@ -47,7 +45,6 @@
 			<li class="tab"><a href="#5" onclick="section(5)">moessbian</a></li>
 		</ul>
     </div>
-	</nav>
 	<!-- (hidden) mobile sidenav MENU -->
 	<ul class="sidenav" id="mobile">
 		<li><a onclick="mobileSection(1)">moesspruino</a></li>
@@ -57,12 +54,87 @@
 		<li><a onclick="mobileSection(5)">moessbian</a></li>
 	</ul>
 
-	<div id ="container">
-	<!-- CARDs -->
+	<div class="row" style="margin: 0">
+	
+	<div class="col s12 m9 l10">
+		<div id ="container">
+		<!-- CARDs -->
+		</div>
 	</div>
+
+	<!-- scrollspy -->
+	<div class="col hide-on-small-only m3 l2">
+	<div class="toc-wrapper pushpin">
+	  <ul id="spy" class="section table-of-contents grey-text text-lighten-4"></ul>
+	</div>
+	</div>
+	
+	</div>
+	
+	<footer id="foot" class="page-footer blue-grey darken-2" style="padding: 0">
+	  <div class="container">
+		<div class="row">
+		  <div class="col l3 m3 s12">
+		  
+			<h5 class="grey-text text-lighten-4">about</h5>
+			<ul class="grey-text text-lighten-3 links">
+			  <li><a href="https://github.com/beweonline/moesspruino">info & source code</a></li>
+			  <li><a href="https://github.com/beweonline/moesspruino/releases/tag/v">download releases</a></li>
+			  <li> <a href="mailto:beweonline@yahoo.com">contact by email</a></li>
+			</ul>
+			
+		  </div>
+		  
+		<div class="col l5 offset-l1 m6 s12">
+		  <h5 class="white-text">consider supporting</h5>
+		  <div class="row" style="margin-bottom: 0px;">
+		  <div class="col s6">
+			<ul class="grey-text text-lighten-3 links">
+			  <li><a href="https://www.espruino.com/">espruino</a></li>
+			  <li><a href="https://www.fsf.org/campaigns/freejs/">free javascript</a></li>
+			  <li><a href="https://materializecss.com/support-us.html">materialize css</a></li>
+			</ul>
+		  </div>
+		  <div class="col s6">
+			<ul class="grey-text text-lighten-3 links">
+			  <li><a href="https://www.blender.org/">blender</a></li>
+			  <li><a href="https://www.gimp.org">gimp</a></li>
+			  <li><a href="https://www.inkscape.org">inkscape</a></li>
+			</ul>
+		  </div>
+		  </div>
+	    </div>
+		  
+	    <div class="col l3 m3 s12">
+		  <h5 class="grey-text text-lighten-4">robotics +</h5>
+		  <ul class="grey-text text-lighten-3 links">
+		    <li><a href="https://earthobservatory.nasa.gov/">climate change</a></li>
+		    <li><a href="https://www.fairphone.com/en/story/?ref=header">fair electronics</a></li>
+		  </ul>
+		</div>		
+
+
+		</div>
+	  </div>
+	  <div class="sticky-bottom footer-copyright blue-grey darken-3">
+		<div class="container">
+		</div>
+	  </div>
+	</footer>
+	  <!-- sticky license -->
+	  <div id="sticky license" class="sticky-bottom footer-copyright blue-grey darken-3">
+		<div class="container">
+		<a class="grey-text text-lighten-2" href="#!">CC BY-NC-SA 2023 george.kiwi</a>
+		<a class="grey-text text-lighten-1 right" href="https://creativecommons.org/licenses/">license applies to website and content</a>
+		</div>
+	  </div>
+	</div>
+	</main>
+	
 	<!-- JavaScript at end of body for optimized loading -->
 	<!-- compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="materialize_dev.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
 	<!-- custom JavaScript -->
 	<script src="card.js"></script>

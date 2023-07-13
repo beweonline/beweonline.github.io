@@ -127,3 +127,60 @@ p{
     transform: rotate(360deg);
   }
 }
+
+/*----------------------------------------------------------------------------*/
+/* VII card styling */
+.italic{
+	font-style: italic;
+}
+.cursor{
+	cursor:url(info.png), auto;
+}
+
+/*----------------------------------------------------------------------------*/
+/* VIII sticky menu & footer */
+.pin-top {
+	position: relative;
+}
+.pin-bottom {
+	position: relative;
+}
+.pinned {
+	position: fixed !important;
+}
+.table-of-contents a.active {
+	font-weight: 600;
+	border-left: 4px solid #89a6c4;
+	color: white;
+}
+.table-of-contents a:hover {
+	color: #89a6c4;
+	border-left: 1px solid #89a6c4;
+}
+.sticky-top {
+	z-index:100;
+	position: sticky !important;
+	width: 100%;
+	top: 0;
+}
+.sticky-bottom {
+	z-index:100;
+	position: sticky !important;
+	width: 100%;
+	bottom: 0;
+	padding: 0px;
+}
+.fixed-bottom {
+	z-index:100;
+	width: 100%;
+	bottom: 0px;
+	position: fixed;
+	padding: 0px;
+}
+.links > li > a{
+	color: #e0e0e0 !important;
+}
+.links > li > a:hover{
+	color: white;
+	font-weight: 600;
+}

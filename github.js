@@ -5,12 +5,21 @@ let myCards = [];
 let cardPromiseResolve;
 
 function section(nr){
+	const container = document.getElementById("container");
+	container.style.display = 'none';
+	const stickyLicense = document.getElementById("sticky license");
+	stickyLicense.style.display = 'none';
+	const footer = document.getElementById("foot");
+	footer.style.display = 'none';
+	if(Matter.Spy.length != 0){
+		M.Pushpin.getInstance(Matter.Pin[0].el).destroy();
+		M.ScrollSpy.getInstance(Matter.Spy[0].el).destroy();	
+	}
 	M.Sidenav.getInstance(Matter.Sidenav[0].el).close();
 	cardSection = nr;
 	cardsObj = [];
 	myCards = [];
 	cardsObj = window["cardsObj"+nr];
-	const container = document.getElementById("container");
 	for(var x = container.children.length-1; x >= 0 ; x--){
 		container.children[x].remove();
 	}
@@ -18,11 +27,25 @@ function section(nr){
 	console.log(path);
 	setTimeout(_=>{addCards()
 	.then( result => {
-		result.style.display = 'block';
+		// format sticky/fixed bottom
+		if(result.children.length == 0){
+			stickyLicense.classList.remove("sticky-bottom");
+			stickyLicense.classList.add("fixed-bottom");
+			footer.classList.add("fixed-bottom");
+		} else {
+			stickyLicense.classList.add("sticky-bottom");
+			stickyLicense.classList.remove("fixed-bottom");
+			footer.classList.remove("fixed-bottom");	
+		}
+		container.style.display = 'block';
+		footer.style.display = 'block';
+		stickyLicense.style.display = 'block';
 		resize();
+		console.log(Matter.Pin);
 		elems = document.querySelectorAll('.tabs');
-		Matter.Tabs = M.Tabs.init(elems, {});	
-	} )},100);
+		Matter.Tabs = M.Tabs.init(elems, {});
+		setupScrollSpy();
+	} )}, 100);
 }
 
 function mobileSection(nr){
@@ -141,7 +164,15 @@ function addCards(){
 		// hide parent until appendage completed
 		const container = document.getElementById("container");
 		container.style.display = 'none';
+		// add list entries to scrollSpy
+		const spy = document.getElementById("spy");
+		spy.innerHTML = "";
 		for(var i=0; i< myCards.length; i++){
+			console.log("myCards", myCards[i], myCards[i].txtTitle);
+			const li = document.createElement("li");
+			const html = "<a href=#" + myCards[i].id + ">" + myCards[i].txtTitle + "</a>";
+			li.innerHTML = html;
+			spy.appendChild(li);
 			const item = myCards[i];
 			myCards[item.id] = {};
 			// new <div>
@@ -151,10 +182,13 @@ function addCards(){
 				myCards[item.id] = div.children[0];
 				myCards[item.id].id = item.id;
 				container.appendChild(myCards[item.id]);
-				setTimeout(() => {resolve(myCards[item.id]);}, 200);
+				//
+				setTimeout(() => {resolve(myCards[item.id]);}, 100);
 			});
 			// <children> setup
 			appendage.then( result => {
+				result.classList.add("section", "scrollspy");
+				result.style.padding = "0";
 				addImg(result, item);
 				addTabs(result, item);
 				addTitles(result, item);
@@ -186,6 +220,24 @@ function checkImgLoaded(ids, result){
 	}
 }
 
+function setupScrollSpy(){
+	const nav = document.getElementById("nav");
+	const foot = document.getElementById("foot");
+
+	const body = document.body, html = document.documentElement;
+	const top = document.getElementById("spy").getBoundingClientRect().y;
+	
+	const height = Math.max(body.scrollHeight, body.offsetHeight, 
+				   html.clientHeight, html.scrollHeight, html.offsetHeight);
+	const bottom = height-foot.clientHeight;//-(window.innerHeight*5/6);
+	
+	elems = document.querySelectorAll('.pushpin');
+	Matter.Pin = M.Pushpin.init(elems, {top: top, bottom: bottom, offset: nav.clientHeight});
+
+	elems = document.querySelectorAll('.scrollspy');
+	Matter.Spy = M.ScrollSpy.init(elems, {scrollOffset: nav.clientHeight});
+}
+
 //.then show + resize cards
 var Matter = {};
 onresize = resize;
@@ -196,15 +248,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	.then( result => {
 		result.style.display = 'block';
 		resize();
-		
-		var elems = document.querySelectorAll('.sidenav');
+
+		let elems = document.querySelectorAll('.sidenav');
 		const options = {edge: "left"};
 		Matter.Sidenav = M.Sidenav.init(elems, options);
 		
 		elems = document.querySelectorAll('.tabs');
 		Matter.Tabs = M.Tabs.init(elems, {});
+		
+		setupScrollSpy();
 	} )
 });
+
+//sticky elements
+document.addEventListener('scroll', function() {
+	//menubar stick on top
+	const navbar = document.getElementById("nav");
+	const menubar = document.getElementById("menubar");
+	if(window.scrollY > navbar.children[0].clientHeight){
+		menubar.classList.add("sticky-top");
+		menubar.style.top = "0px";
+	} else {
+		menubar.classList.remove("sticky-top");
+	}
+	// footer stick to bottom
+})
 
 function findChild(parent, childClass){
 	for(var child of parent.childNodes){
