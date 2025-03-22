@@ -67,6 +67,10 @@
 	window.onload = function(){
 		if(video.videoHeight > 0){
 			resize();
+			if(video.readyState == 4){
+				video.muted="muted";
+				video.play();
+			}
 		} else {setTimeout(window.onload,200);}
 	}
 </script>

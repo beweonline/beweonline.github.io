@@ -17,7 +17,7 @@ sg90.setup(myServos);
 function animation(){
   calibrate(1)
   .then(_=> servo0.move(3))
-  .then(_=> servo0.move(2.7));
+  .then(_=> servo0.move(2.5));
 }
 
 animation();
@@ -54,7 +54,7 @@ sg90.setup(myServos);
 function animation(){
   calibrate(1)
   .then(_=> servo0.move(3))
-  .then(_=> servo0.move(2.7));
+  .then(_=> servo0.move(2.5));
 }
 
 animation();
@@ -153,7 +153,7 @@ servo0.move(3)
 \
 `,
 	code3: `\
-servo0.increment = 1/20;
+servo0.increment = 1/10;
 servo0.move(2,100);
 servo1.increment = 1/200;
 servo1.move(2,10);
@@ -194,15 +194,18 @@ servo0.move(3)
 <p>.increment stores the step size as a fraction of 1</p>
 <p>the default of 1/100 means that there are 100 steps between 1 and 2</p>
 <p>the smaller the value the more steps have to be taken
-<p>if step duration were not to change this would typically make a servo slowlier</p>
-<p>but step resolution and step duration can be combined to achieve various effects</p>
+<p>if step duration were not to change this would make a servo slowlier</p>
+<p>but step resolution and step duration can be combined to achieve effects</p>
 <br>
 
 <pre onclick="clipboard(event,['_03','copycode','3'])"><code class="language-javascript">\
-servo0.increment = 1/20;
-servo0.move(2,100); //20 steps in 200ms
+//few long 100ms & coarse 0.1 steps
+servo0.increment = 1/10;
+servo0.move(2,100)
+
+//many short 10ms & smooth 0.005 steps
 servo1.increment = 1/200;
-servo1.move(2,10); //200 steps in 200ms
+servo1.move(2,10);
 \</code></pre>
 
 <br>

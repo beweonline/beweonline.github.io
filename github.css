@@ -184,3 +184,13 @@ p{
 	color: white;
 	font-weight: 600;
 }
+.footer-icons1{
+	line-height: 0;
+	position: relative;
+	top: 3px;
+}
+.footer-icons2{
+	line-height: 0;
+	position: relative;
+	top: 7px;
+}

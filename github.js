@@ -247,6 +247,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	addCards()
 	.then( result => {
 		result.style.display = 'block';
+		const stickyLicense = document.getElementById("sticky license");
+		stickyLicense.style.display = 'block';
+		const footer = document.getElementById("foot");
+		footer.style.display = 'block';
+			stickyLicense.classList.add("sticky-bottom");
+			stickyLicense.classList.remove("fixed-bottom");
+			footer.classList.remove("fixed-bottom");
 		resize();
 
 		let elems = document.querySelectorAll('.sidenav');

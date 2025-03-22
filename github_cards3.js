@@ -7,9 +7,9 @@ cardsObj3._01 = {
 	titles: [["robot in action >>>","videos/video.html?src=demo.mp4"],
 			 ["PDF plans >>>","https://github.com/beweonline/moesspruino/tree/main/plans"]],
 	hideTitles: true,
-	txtTitle: 'Blueprints',
+	txtTitle: 'blueprints',
 	txt: `<p class="flow-text">
-moessARM is an effort to construct a model of a robotic arm with servo motors.
+moessARM is an effort to construct a model of a robotic arm with pick'n'place functionality.
 4mm thick A3 sized birch plywood is the stock material used in the plans
 provided. 2 x 2cm beech cubes accelerate buildup. to reduce friction the 
 arm sits on a rotary bearing with flanges mounted to the base. screw eyes
