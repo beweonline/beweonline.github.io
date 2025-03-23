@@ -106,6 +106,7 @@ sg9.setup(myS, myO);
 what's left to do in the elementary example, is: define pins and properties of
 your servos, calibrate by pulsing and define a sequence of servo motions in a reusable function.
 </p>
+<br>
 <p>structure for code example A - calibrate by pulse and animate servos</p>
 <pre onclick="clipboard(event,['_03','copycode','2'])"><code class="language-javascript">\
 cal(1);
