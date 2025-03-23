@@ -5,7 +5,7 @@ cardsObj7._01 = {
 	swap: [false, false],
 	tabs: ["robot construction", "plan"],
 	titles: [["presentation >>>", "cards7/construction/reveal.html"],
-			 ["PDF plan >>>","https://github.com/beweonline/moesspruino/tree/main/plans"]],
+			 ["PNG plan >>>","https://github.com/beweonline/moesspruino/blob/main/plans"]],
 	txtTitle: 'I mechanics',
 	hideTitles: true,
 	txt: `<p class="flow-text">
