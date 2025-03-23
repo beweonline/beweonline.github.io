@@ -90,8 +90,7 @@ hld = function() {}
 	txt: `<p class="flow-text">
 espruino firmware w/ its live javascript interpreter makes it fun and intuitive to 
 exercise computer numeric control (cnc). the sg9x libraries provide a simple boilerplate
-mechanism to get going quickly. what's left to do, is: define pins and properties of
-your servos, calibrate by pulsing and define a sequence of servo motions in a reusable function.
+mechanism to get going quickly.
 </p>
 <br>
 <p>the 'boilerplate'</p>
@@ -103,6 +102,10 @@ myO = {vbs: true,
 sg9.setup(myS, myO);
 \</code></pre>
 <br>
+<p class="flow-text">
+what's left to do in the elementary example, is: define pins and properties of
+your servos, calibrate by pulsing and define a sequence of servo motions in a reusable function.
+</p>
 <p>structure for code example A - calibrate by pulse and animate servos</p>
 <pre onclick="clipboard(event,['_03','copycode','2'])"><code class="language-javascript">\
 cal(1);
@@ -115,7 +118,7 @@ watchdog observes a pin and an associated callback function decides what to do:
 awake and calibrate the servos, start or pause the servo animation.
 </p>
 <br>
-<p>structure for code exmple B - watchdog, callback & hold function</p>
+<p>structure for code example B - watchdog, callback & hold function</p>
 <pre onclick="clipboard(event,['_03','copycode','3'])"><code class="language-javascript">\
 cls = NodeMCU.D1;
 pinMode(cls , 'input');
