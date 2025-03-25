@@ -21,8 +21,14 @@
       </div>
     </div>
     <script src="../../dist/reveal.js"></script>
+	<script src="../../dist/zoom.js"></script>
     <script>
-      Reveal.initialize({transition: 'fade'});
+      Reveal.initialize({
+			transition: 'fade',
+            plugins: [ RevealZoom ],
+			zoomLevel: 3
+        });
+    </script>
     </script>
   </body>
 </html>
